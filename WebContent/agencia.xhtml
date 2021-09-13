@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo-centro">
+        <p /><h2>Bem Vindo #{sessionScope.usuario}!</h2>            
+        <h:form>
+            <h:panelGrid id="display" columns="2" cellpadding="4"> 
+                <h:panelGrid id="display4" columns="2" cellpadding="4">
+                    <h:outputText
+                        id="txt-my-vagas"
+                        value="#{msgs.home_agencia_you_have} #{homeAgenciaBean.qtdMyVagas} #{msgs.home_agencia_vagas}"/>
+					<p:poll async="true" interval="2" widgetVar="myPoll2"
+						listener="#{homeAgenciaBean.updateMyVagas(sessionScope.usuario)}"
+						update="txt-my-vagas" />
+				</h:panelGrid>
+                <p:commandButton value="#{msgs.home_agencia_cadastrar_vagas}" 
+                onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+                action="#{homeAgenciaBean.cadastrarVagas}"/>
+                <h:panelGrid id="display3" columns="2" cellpadding="4">
+                    <h:outputText id="txt-msgs" value="#{msgs.home_agencia_you_have} #{homeAgenciaBean.qtdMsgs} #{msgs.home_agencia_mensagens}"/>
+					<p:poll async="true" interval="2" widgetVar="myPoll3"
+						listener="#{homeAgenciaBean.updateMensagens(sessionScope.usuario)}"
+						update="txt-msgs" />
+				</h:panelGrid>
+                <p:commandButton id="btnMsgs" value="#{msgs.home_agencia_visualizar_mensagens}" 
+                onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+                action="mensagens"/>
+            </h:panelGrid>
+        </h:form>
+        <p></p>
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="4">
+                <p:commandButton value="#{msgs.lnk_registra_saida}" 
+                onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+                action="#{acessoBean.registraSaida()}"/>
+                <p:commandButton value="#{msgs.lnk_registra_logoff}"
+                onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+                action="#{acessoBean.registraLogoff()}"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li>
+            <p:commandLink value="#{msgs.home_agencia_cadastrar_vagas}" 
+            onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+            action="#{homeAgenciaBean.cadastrarVagas}"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.home_agencia_visualizar_mensagens}" 
+            onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+            action="mensagens"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.lnk_registra_logoff}" 
+            onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+            action="#{acessoBean.registraLogoff()}"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.lnk_registra_saida}"
+                onclick="PF('myPoll2').stop();PF('myPoll3').stop();"
+            action="#{acessoBean.registraSaida()}"/>
+        </li>
+    </ui:define>
+    
+</ui:composition>

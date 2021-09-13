@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="conteudo-centro">
+        <h2>#{msgs.cad_estudante_titulo}</h2>
+        <h:form>
+            <p />
+            
+            <p:panelGrid columns="4">
+                <f:facet name="header">#{msgs.cad_estudante_dados}</f:facet>
+                <p:outputLabel value="#{msgs.cad_estudante_nome}#{msgs.column}" for="campo-nomee"/>
+                <p:inputText value="#{estudanteBean.estudante.nome}" id="campo-nomee"/>
+                <p:outputLabel value="#{msgs.cad_estudante_sobrenome}#{msgs.column}" for="campo-sobrenomee"/>
+                <p:inputText value="#{estudanteBean.estudante.sobrenome}" id="campo-sobrenomee"/>
+                <p:outputLabel value="#{msgs.cad_estudante_sexo}#{msgs.column}" for="campo-sexoe"/>
+                <p:inputText value="#{estudanteBean.estudante.sexo}" id="campo-sexoe"/>    
+            </p:panelGrid>
+            <p />
+            
+            <p:panelGrid columns="4">
+                <f:facet name="header">#{msgs.cad_estudante_dados_endereco}</f:facet>
+                <p:outputLabel value="#{msgs.cad_estudante_endereco}#{msgs.column}" for="campo-enderecoe"/>
+                <p:inputText value="#{estudanteBean.estudante.endereco}" id="campo-enderecoe"/>
+                <p:outputLabel value="#{msgs.cad_estudante_bairro}#{msgs.column}" for="campo-bairroe"/>
+                <p:inputText value="#{estudanteBean.estudante.bairro}" id="campo-bairroe"/>
+                <p:outputLabel value="#{msgs.cad_estudante_cidade}#{msgs.column}" for="campo-cidadee"/>
+                <p:inputText value="#{estudanteBean.estudante.cidade}" id="campo-cidadee"/>
+                <p:outputLabel value="#{msgs.cad_estudante_estado}#{msgs.column}" for="campo-estadoe"/>
+                <p:inputText value="#{estudanteBean.estudante.estado}" id="campo-estadoe"/>
+                <p:outputLabel value="#{msgs.cad_estudante_cep}#{msgs.column}" for="campo-cepe"/>
+                <p:inputText value="#{estudanteBean.estudante.cep}" id="campo-cepe"/>
+                <p:outputLabel value="#{msgs.cad_estudante_telefone}" for="campo-telefonee"/>
+                <p:inputText value="#{estudanteBean.estudante.telefone}" id="campo-telefonee"/>
+                <p:outputLabel value="#{msgs.cad_estudante_ramal}#{msgs.column}" for="campo-ramale"/>
+                <p:inputText value="#{estudanteBean.estudante.ramal}" id="campo-ramale"/>
+                <p:outputLabel value="#{msgs.cad_estudante_fax}#{msgs.column}" for="campo-faxe"/>
+                <p:inputText value="#{estudanteBean.estudante.fax}" id="campo-faxe"/>
+            </p:panelGrid>
+            <p/>
+            
+            <p:panelGrid columns="4">
+                <f:facet name="header">#{msgs.cad_estudante_dados_acesso}</f:facet>
+                <p:outputLabel value="#{msgs.cad_estudante_login}#{msgs.column}" for="campo-logine"/>
+                <p:inputText value="#{estudanteBean.estudante.login}" id="campo-logine"/>
+                <p:outputLabel value="#{msgs.cad_estudante_senha}#{msgs.column}" for="campo-senhae"/>
+                <p:password value="#{estudanteBean.estudante.senha}" id="campo-senhae" toggleMask="true" redisplay="true"/>                
+            </p:panelGrid>
+            <p/>
+            
+            <p:commandButton value="#{msgs.btn_cancelar}" action="index"/>
+			<p:commandButton value="#{msgs.btn_cadastrar}" action="#{estudanteBean.cadastrarEstudante}">
+				<p:ajax update="msg" />
+			</p:commandButton>
+
+		</h:form>
+    
+    </ui:define>
+
+	<ui:define name="conteudo-menu">
+		<li><p:commandLink value="#{msgs.lnk_menu_principal}" action="index" /></li>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="conteudo-centro">
+        <p />
+        <h2>#{msgs.index_titulo}</h2>
+        <!--  <h:messages/>-->
+        <h:form>
+            <p:panelGrid columns="1">
+                <f:facet name="header">#{msgs.index_opcoes}</f:facet>
+                <p:commandLink value="#{msgs.index_opcao_login}" action="#{acessoBean.registraLogoff}"/>
+                <p:commandLink value="#{msgs.index_opcao_agencia}" action="cadastroAgencia"/>
+                <p:commandLink value="#{msgs.index_opcao_estudante}" action="cadastroEstudante"/>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li><p:commandLink value="#{msgs.lnk_login}" action="#{acessoBean.registraLogoff}"/></li>
+        <li><p:commandLink value="#{msgs.lnk_cadastrar_agencia}" action="cadastroAgencia"/></li>
+        <li><p:commandLink value="#{msgs.lnk_cadastrar_estudante}" action="cadastroEstudante"/></li>
+        <li><p:commandLink value="#{msgs.lnk_news}" action="#{acessoBean.visualizaNews}"/></li>
+        <li><p:commandLink value="#{msgs.lnk_about}" action="#{acessoBean.visualizaSobre}"/></li>
+    </ui:define>
+    
+</ui:composition>
+

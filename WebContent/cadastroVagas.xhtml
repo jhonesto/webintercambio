@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="conteudo-centro">
+        <h2>#{msgs.cadastro_vagas_titulo}</h2>
+        <p/>
+        <h:form>
+            <h:panelGrid id="display" columns="2" cellpadding="4">
+                <h:outputLabel value="#{msgs.cadastro_vagas_vaga_titulo}" for="campo-titulo"/>
+                <h:inputText value="#{cadastroVagasBean.vaga.tituloVaga}" id="campo-titulo"/>
+                <h:outputLabel value="#{msgs.cadastro_vagas_vaga_pais_regiao}" for="campo-paisregiao"/>
+                <h:inputText value="#{cadastroVagasBean.vaga.paisRegiao}" id="campo-paisregiao"/>
+                <h:outputLabel value="#{msgs.cadastro_vagas_vaga_inicio}" for="campo-datainicio"/>
+                <h:inputText value="#{cadastroVagasBean.vaga.dataInicio}" id="campo-datainicio">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>    
+                </h:inputText>
+                <h:outputLabel value="#{msgs.cadastro_vagas_vaga_termino}" for="campo-datafinal"/>
+                <h:inputText value="#{cadastroVagasBean.vaga.dataFinal}" id="campo-datafinal">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                <h:outputLabel value="#{msgs.cadastro_vagas_vaga_descr}" for="campo-descricao"/>
+                <h:inputText value="#{cadastroVagasBean.vaga.descricao}" id="campo-descricao"/>
+                <h:outputLabel value=""/>
+                <h:panelGrid id="display-btn" columns="3" cellpadding="6">
+                    <p:commandButton value="#{msgs.cadastro_vagas_btn_cancelar}" action="#{cadastroVagasBean.voltar}"/>
+                    <p:commandButton value="#{msgs.cadastro_vagas_btn_cadastrar}" action="#{cadastroVagasBean.cadastrarVaga(sessionScope.usuario)}"/>  
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:form>        
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li><p:commandLink value="#{msgs.cadastro_vagas_btn_voltar}"
+				action="#{cadastroVagasBean.voltar}" /></li>
+    </ui:define>
+    
+</ui:composition>

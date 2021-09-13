@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:loadBundle var="msgs" basename="br.com.webintercambio.resources.messages"></f:loadBundle>
+
+<h:head>
+	<title>#{msgs.site}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Web site" />
+	<meta name="description" content="Site description here" />
+	<meta name="keywords" content="keywords here" />
+	<meta name="language" content="en" />
+	<meta name="subject" content="Site subject here" />
+	<meta name="robots" content="All" />
+	<meta name="copyright" content="Your company" />
+	<meta name="abstract" content="Site description here" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link id="theme " rel="stylesheet" type="text/css" href="style.css" title="theme" />
+	
+</h:head>
+
+<h:body>
+	<p:growl id="msg" showDetail="true"/>
+	<div class="responsive">
+	
+		<div id="wrapper">
+		
+			<div id="bg">
+				
+				<div id="header"></div>
+				
+				<div id="page">
+					
+					<div id="container">
+						<!-- Title -->
+						<div id="topTitle"></div>
+						<!-- banner -->
+						<div id="banner"></div>
+						<!-- end banner -->
+						
+						<!-- horizontal navigation -->
+						<div id="nav1">
+							<ul>
+								<li id="current" style="border: none"><p:commandLink value="#{msgs.menu_home}" action="#{acessoBean.registraSaida}" /></li>
+								<li><p:commandLink value="#{msgs.menu_login}" action="#{acessoBean.registraLogoff}" /></li>
+								<li><p:commandLink value="#{msgs.menu_news}" action="#{acessoBean.visualizaNews}" /></li>
+								<li><p:commandLink value="#{msgs.menu_about}" action="#{acessoBean.visualizaSobre}" /></li>
+							</ul>
+						</div>
+						<!-- end horizontal navigation -->
+						
+						
+						<!--  content -->
+						<div id="content">
+							
+							<div id="center">
+								<div id="welcome">
+									<ui:insert name="conteudo-centro">
+										<!--  Espaço para o conteudo central-->
+										<!--  Espaço para o conteudo central-->
+										<!--  Espaço para o conteudo central-->
+									</ui:insert>
+								</div>
+							</div>
+							
+							<div id="right">
+								<div id="sidebar">
+								
+									<h3>#{msgs.menu}</h3>
+									<ul class="vmenu">
+										<ui:insert name="conteudo-menu">
+											<!--  Espaço para o conteudo do menu-->
+											<!--  Espaço para o conteudo do menu-->
+											<!--  Espaço para o conteudo do menu-->
+										</ui:insert>
+									</ul>
+									
+									<h3 style="margin-top: 40px">#{msgs.news}</h3>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+										elit. Sed non risus. Suspendisse lectus tortor, dignissim sit
+										amet, adipiscing nec, ultricies sed, dolor. Cras elementum
+										ultrices diam. Maecenas ligula massa, varius a, semper congue,
+										euismod non, mi.</p>
+									<div style="font-weight: bold; margin-top: 20px">#{msgs.call_us}</div>
+									<div style="text-align: center; margin: 20px 0">
+										<img src="images/call-1.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="clear" style="height: 40px"></div>
+						</div>
+						<!-- end content -->
+						
+					</div>
+					<!-- end container -->
+					
+				</div>
+				<div id="footerWrapper">
+					<div id="footer">
+						<p style="padding-top: 10px">
+							<!-- 
+								DO NOT REMOVE OR MODIFY THE FOOTER LINK BELOW.
+								If you want to remove this link please make a 10 dollars donation at www.dotemplate.com
+							-->
+							<a href="http://www.dotemplate.com" shape="rect">#{msgs.temp_maker}</a>
+							
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

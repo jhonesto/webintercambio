@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="conteudo-centro">
+		<h2>#{msgs.mensagens_titulo}</h2>
+		<p />
+		<h:form id="form">
+			<p:dataTable
+				value="#{consultaMensagensBean.obterListaMensagens(sessionScope.usuario)}"
+				var="mensagem" rowKey="#{mensagem.idMensagem}" paginator="true"
+				rows="10" selection="#{consultaMensagensBean.msgSelecionada}"
+				selectionMode="single">
+				<p:ajax event="rowSelect" update=":form:display"
+					oncomplete="PF('MsgDialog').show()" />
+				<f:facet name="header">#{msgs.mensagens_tabela_titulo}</f:facet>
+				<p:column headerText="#{msgs.mensagens_coluna_mensagem_id}" 
+					sortBy="#{mensagem.idMensagem}">
+                    #{mensagem.idMensagem}
+                </p:column>
+				<p:column headerText="#{msgs.mensagens_coluna_vaga_id}" 
+					sortBy="#{mensagem.idVaga}" id="msg-idvaga">
+                    #{mensagem.idVaga}
+                </p:column>
+				<p:column headerText="#{msgs.mensagens_coluna_de}" id="msg-from">
+                    #{mensagem.loginFrom}
+                </p:column>
+				<p:column headerText="#{msgs.mensagens_coluna_para}" id="msg-to">
+                    #{mensagem.loginTo}
+                </p:column>
+				<p:column headerText="#{msgs.mensagens_coluna_assunto}" id="msg-subject">
+                    #{mensagem.assunto}
+                </p:column>
+			</p:dataTable>
+
+			<p:dialog header="#{msgs.mensagens_dialogo_titulo}"
+				widgetVar="MsgDialog" resizable="false" width="400"
+				showEffect="explode" hideEffect="explode">
+				<h:panelGrid id="display" columns="2" cellpadding="4">
+					<h:outputText value="#{msgs.mensagens_dialogo_vaga}" />
+					<h:outputText value="#{consultaMensagensBean.msgSelecionada.idVaga}" id="msg-idvaga" />
+					<h:outputText value="#{msgs.mensagens_dialogo_de}" />
+					<h:outputText value="#{consultaMensagensBean.msgSelecionada.loginFrom}" id="msg-from" />
+					<h:outputText value="#{msgs.mensagens_dialogo_para}" />
+					<h:outputText value="#{consultaMensagensBean.msgSelecionada.loginTo}" id="msg-to" />
+					<h:outputText value="#{msgs.mensagens_dialogo_assunto}" />
+					<h:outputText value="#{consultaMensagensBean.msgSelecionada.assunto}" id="msg-subject" />
+					<h:outputText value="#{msgs.mensagens_dialogo_mensagem}" />
+					<h:outputText value="#{consultaMensagensBean.msgSelecionada.corpoMensagem}"	id="msg-body" />
+					<p:commandButton
+						action="#{consultaMensagensBean.responderMsg}"
+						value="#{msgs.mensagens_dialogo_btn_responder}" />
+				</h:panelGrid>
+			</p:dialog>
+
+		</h:form>
+		<h:form>
+			<p:commandButton value="#{msgs.mensagens_btn_voltar}" 
+				action="#{consultaMensagensBean.finalizaConsulta(sessionScope.usuario)}" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="conteudo-menu">
+		<li><p:commandLink value="#{msgs.mensagens_lnk_voltar}"
+				action="#{consultaMensagensBean.finalizaConsulta(sessionScope.usuario)}" /></li>
+	</ui:define>
+
+</ui:composition>

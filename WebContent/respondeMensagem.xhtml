@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="conteudo-centro">
+        <h2>#{msgs.responde_mensagem_titulo}</h2>
+        <p />
+        <h:form>
+            <h:panelGrid id="display" columns="2" cellpadding="4">   
+                <h:outputLabel value="#{msgs.responde_mensagem_vaga_id}#{msgs.column}" for="campo-idvaga"/>
+                <h:outputLabel value="#{consultaMensagensBean.respMsgSelecionada.idVaga}" id="campo-idvaga" />
+                <h:outputLabel value="#{msgs.responde_mensagem_de}#{msgs.column}" for="campo-loginfrom"/>
+                <h:outputLabel value="#{consultaMensagensBean.respMsgSelecionada.loginFrom}" id="campo-loginfrom" />
+                <h:outputLabel value="#{msgs.responde_mensagem_para}#{msgs.column}" for="campo-loginto"/>
+                <h:outputLabel value="#{consultaMensagensBean.respMsgSelecionada.loginTo}" id="campo-loginto" />
+                <h:outputLabel value="#{msgs.responde_mensagem_assunto}#{msgs.column}" for="campo-assunto"/>
+                <h:outputLabel value="#{consultaMensagensBean.respMsgSelecionada.assunto}" id="campo-assunto" />
+                <h:outputLabel value="#{msgs.responde_mensagem_obs}#{msgs.column}" for="campo-obs"/>
+                <h:inputTextarea value="#{consultaMensagensBean.respMsgSelecionada.corpoMensagem}" id="campo-obs" />
+                
+                <p:commandButton value="#{msgs.responde_mensagem_btn_cancelar}" action="#{consultaMensagensBean.voltarRespondeMensagens}"/>
+                <p:commandButton value="#{msgs.responde_mensagem_btn_responder}" action="#{consultaMensagensBean.enviarResposta}"/>
+               
+                <h:inputHidden value="#{consultaMensagensBean.idVaga}" />
+                <h:inputHidden value="#{consultaMensagensBean.loginFrom}"/>
+                <h:inputHidden value="#{consultaMensagensBean.loginTo}"/>
+                <h:inputHidden value="#{consultaMensagensBean.assunto}"/>
+
+			</h:panelGrid>
+        </h:form>        
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li>
+            <p:commandLink value="#{msgs.responde_mensagem_lnk_voltar}" action="#{consultaMensagensBean.voltarRespondeMensagens}"/>
+        </li>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="conteudo-centro">
+		<h2>#{msgs.vagas_titulo}</h2>
+		<p />
+		<h:form id="form">
+			<p:dataTable value="#{consultaVagasBean.listaVagas}" var="vaga"
+				rowKey="#{vaga.idVaga}" paginator="true" rows="10"
+				selection="#{consultaVagasBean.vagaSelecionada}" selectionMode="single">
+				<p:ajax event="rowSelect" update=":form:display-vgselected"
+					oncomplete="PF('MsgDialogVaga').show()" />
+				<f:facet name="header">#{msgs.vagas_tabela_titulo}</f:facet>
+				<p:column headerText="#{msgs.vagas_coluna_id}" sortBy="#{vaga.idVaga}">
+					#{vaga.idVaga}
+				</p:column>
+				<p:column headerText="#{msgs.vagas_coluna_titulo}">
+                    #{vaga.tituloVaga}
+                </p:column>
+				<p:column headerText="#{msgs.vagas_coluna_id_agencia}">
+                    #{vaga.idAgencia}
+                </p:column>
+				<p:column headerText="#{msgs.vagas_coluna_dt_inicio}">
+                    #{vaga.dataInicio}
+                </p:column>
+				<p:column headerText="#{msgs.vagas_coluna_dt_final}">
+                    #{vaga.dataFinal}
+                </p:column>
+				<p:column headerText="#{msgs.vagas_coluna_pais_regiao}">
+                    #{vaga.paisRegiao}
+                </p:column>
+			</p:dataTable>
+			
+			<p:dialog header="#{msgs.vagas_dialogo_titulo}" widgetVar="MsgDialogVaga"
+				resizable="false" width="400" showEffect="explode" hideEffect="explode">
+
+				<h:panelGrid id="display-vgselected" columns="2" cellpadding="4">
+					<h:outputText value="#{msgs.vagas_dialogo_id_agencia}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.idAgencia}" id="vg-idagencia" />
+					<h:outputText value="#{msgs.vagas_dialogo_id_vaga}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.idVaga}" id="vg-idvaga" />
+					<h:outputText value="#{msgs.vagas_dialogo_vaga}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.tituloVaga}" id="vg-titvaga" />
+					<h:outputText value="#{msgs.vagas_dialogo_inicio}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.dataInicio}" id="vg-inicio" />
+					<h:outputText value="#{msgs.vagas_dialogo_final}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.dataFinal}" id="vg-final" />
+					<h:outputText value="#{msgs.vagas_dialogo_pais_regiao}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.paisRegiao}" id="vg-pais-regiao" />
+					<h:outputText value="#{msgs.vagas_dialogo_descricao}#{msgs.column}" />
+					<h:outputText value="#{consultaVagasBean.vagaSelecionada.descricao}" id="vg-descricao" />
+					<p:commandButton 
+						action="#{consultaVagasBean.visualizaVaga}"
+						value="#{msgs.vagas_dialogo_btn_visualizar}" />
+				</h:panelGrid>
+			</p:dialog>
+			
+		</h:form>
+
+		<h:form>
+			<p:commandButton value="#{msgs.vagas_btn_voltar}"
+				action="#{consultaVagasBean.finalizaConsulta}" />
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="conteudo-menu">
+		<li><p:commandLink value="#{msgs.vagas_lnk_voltar}"
+				action="#{consultaVagasBean.finalizaConsulta}" /></li>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="conteudo-centro">
+        
+        <p /><h2>Bem Vindo #{sessionScope.usuario}</h2>
+        
+        <h:form >
+            <h:panelGrid columns="2" cellpadding="4">
+                <h:panelGrid columns="2" cellpadding="2">
+					<h:outputText id="txt-vagas"
+						value="#{msgs.home_we_have} #{homeBean.qtdVagas} #{msgs.home_vagas}" />
+					<p:poll async="true" interval="2" widgetVar="myPoll0"
+						listener="#{homeBean.updateVagas}" update="txt-vagas" />
+				</h:panelGrid>
+
+				<p:commandButton id="btnVagas"
+					onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+					value="#{msgs.home_vagas_visualizar}" action="vagas" />
+
+				<h:panelGrid columns="2" cellpadding="2">
+                    <h:outputText id="txt-msgs" value="#{msgs.home_you_have} #{homeBean.qtdMsgs} #{msgs.home_mensagens}"/>
+					<p:poll async="true" interval="2" widgetVar="myPoll1"
+						listener="#{homeBean.updateMensagens(sessionScope.usuario)}"
+						update="txt-msgs" />
+				</h:panelGrid>
+
+				<p:commandButton id="btnMsgs"
+					onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+					value="#{msgs.home_mensagens_visualizar}" action="mensagens" />
+			</h:panelGrid>
+        </h:form>
+        <p  />
+        
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="4">
+				<p:commandButton value="#{msgs.lnk_registra_saida}"
+					onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+					action="#{acessoBean.registraSaida}" />
+				<p:commandButton value="#{msgs.lnk_registra_logoff}"
+					onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+					action="#{acessoBean.registraLogoff}" />
+			</h:panelGrid>    
+        </h:form>
+        
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li>
+            <p:commandLink value="#{msgs.lnk_visualizar_vagas}" 
+            onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+            action="vagas"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.lnk_visualizar_mensagens}" 
+            onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+            action="mensagens"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.lnk_registra_logoff}" 
+            onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+            action="#{acessoBean.registraLogoff}"/>
+        </li>
+        <li>
+            <p:commandLink value="#{msgs.lnk_registra_saida}" 
+            onclick="PF('myPoll0').stop();PF('myPoll1').stop();"
+            action="#{acessoBean.registraSaida}"/>
+        </li>
+    </ui:define>
+
+</ui:composition>

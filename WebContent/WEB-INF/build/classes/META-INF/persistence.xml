@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+	<persistence-unit name="webintercambio">
+		<class>br.com.webintercambio.model.Agencia</class>
+		<class>br.com.webintercambio.model.Estudante</class>
+		<class>br.com.webintercambio.model.Mensagem</class>
+		<class>br.com.webintercambio.model.User</class>
+		<class>br.com.webintercambio.model.Vaga</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/home/jhonesto/Documents/data/webintercambio" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="show_sql" value="true" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+		</properties>
+
+	</persistence-unit>
+</persistence>

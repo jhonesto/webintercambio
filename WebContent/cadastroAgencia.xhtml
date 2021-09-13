@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="conteudo-centro">
+		<h2>#{msgs.cad_agencia_titulo}</h2>
+		<h:form>
+			<p />
+			<p:panelGrid columns="4">
+				<f:facet name="header">#{msgs.cad_agencia_dados}</f:facet>
+				<p:outputLabel value="#{msgs.cad_agencia_nome}#{msgs.column}" for="campo-nome" />
+				<p:inputText value="#{agenciaBean.agencia.nome}" id="campo-nome" />
+				<p:outputLabel value="#{msgs.cad_agencia_endereco}#{msgs.column}" for="campo-endereco" />
+				<p:inputText value="#{agenciaBean.agencia.endereco}" id="campo-endereco" />
+				<p:outputLabel value="#{msgs.cad_agencia_bairro}#{msgs.column}" for="campo-bairro" />
+				<p:inputText value="#{agenciaBean.agencia.bairro}" id="campo-bairro" />
+				<p:outputLabel value="#{msgs.cad_agencia_cidade}#{msgs.column}" for="campo-cidade" />
+				<p:inputText value="#{agenciaBean.agencia.cidade}" id="campo-cidade" />
+				<p:outputLabel value="#{msgs.cad_agencia_estado}#{msgs.column}" for="campo-estado" />
+				<p:inputText value="#{agenciaBean.agencia.estado}" id="campo-estado" />
+				<p:outputLabel value="#{msgs.cad_agencia_cep}#{msgs.column}" for="campo-cep" />
+				<p:inputText value="#{agenciaBean.agencia.cep}" id="campo-cep" />
+				<p:outputLabel value="#{msgs.cad_agencia_pais}#{msgs.column}" for="campo-paisregiao" />
+				<p:inputText value="#{agenciaBean.agencia.pais}" id="campo-paisregiao" />
+				<p:outputLabel value="#{msgs.cad_agencia_telefone}#{msgs.column}" for="campo-telefone" />
+				<p:inputText value="#{agenciaBean.agencia.telefone}" id="campo-telefone" />
+				<p:outputLabel value="#{msgs.cad_agencia_ramal}#{msgs.column}" for="campo-ramal" />
+				<p:inputText value="#{agenciaBean.agencia.ramal}" id="campo-ramal" />
+				<p:outputLabel value="#{msgs.cad_agencia_fax}#{msgs.column}" for="campo-fax" />
+				<p:inputText value="#{agenciaBean.agencia.fax}" id="campo-fax" />
+
+			</p:panelGrid>
+			<p />
+			
+			<p:panelGrid columns="4">
+				<f:facet name="header">#{msgs.cad_agencia_dados_responsavel}</f:facet>
+				<p:outputLabel value="#{msgs.cad_agencia_resp_nome}#{msgs.column}" for="campo-responsavel" />
+				<p:inputText value="#{agenciaBean.agencia.nomeResponsavel}" id="campo-responsavel" />
+				<p:outputLabel value="#{msgs.cad_agencia_resp_sobrenome}#{msgs.column}" for="campo-sobrenome" />
+				<p:inputText value="#{agenciaBean.agencia.sobrenome}" id="campo-sobrenome" />
+				<p:outputLabel value="#{msgs.cad_agencia_resp_sexo}#{msgs.column}" for="campo-sexo" />
+				<p:inputText value="#{agenciaBean.agencia.sexo}" id="campo-sexo" />
+			
+			</p:panelGrid>
+			<p />
+			
+			<p:panelGrid columns="4">
+				<f:facet name="header">#{msgs.cad_agencia_dados_acesso}</f:facet>
+				<p:outputLabel value="#{msgs.cad_agencia_login}#{msgs.column}" for="campo-login" />
+				<p:inputText value="#{agenciaBean.agencia.login}" id="campo-login" />
+				<p:outputLabel value="#{msgs.cad_agencia_senha}#{msgs.column}" for="campo-senha" />
+				<p:password value="#{agenciaBean.agencia.senha}" id="campo-senha" toggleMask="true" redisplay="true"/>
+			</p:panelGrid>
+
+			<p />
+			<p:commandButton value="#{msgs.btn_cancelar}" action="index" />
+			<p:commandButton value="#{msgs.btn_cadastrar}" action="#{agenciaBean.cadastrarAgencia}">
+				<p:ajax update="msg" />
+			</p:commandButton>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="conteudo-menu">
+		<li><p:commandLink value="#{msgs.lnk_menu_principal}" action="index" /></li>
+	</ui:define>
+
+</ui:composition>

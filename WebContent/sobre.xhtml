@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="conteudo-centro">
+        <h:form>
+        
+            <p /><h2>#{msgs.about_titulo}</h2>
+            <p />
+            
+            <p:panelGrid columns="2" >
+                <f:facet name="header">#{msgs.about_info}</f:facet>
+                <h:outputText value="#{msgs.about_language_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_language}"/>
+                <h:outputText value="#{msgs.about_framework_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_framework}" />                
+                <h:outputText value="#{msgs.about_application_server_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_application_server}"/>
+                <h:outputText value="#{msgs.about_orm_tool_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_orm_tool}" />                
+                <h:outputText value="#{msgs.about_data_base_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_data_base}" />
+                <h:outputText value="#{msgs.about_ide_header}#{msgs.column}"/>
+                <h:outputText value="#{msgs.about_ide}"/>
+            </p:panelGrid>
+            <p />
+            
+            <h3>#{msgs.about_integrantes}</h3>
+            
+            <p:panelGrid columns="4">
+                <f:facet name="header">#{msgs.about_integrantes_dados}</f:facet>
+                <h:outputText value="#{msgs.about_integrante_nome1}"/>
+                <h:outputText value="#{msgs.about_integrante_ra1}"/>
+                <h:outputText value="#{msgs.about_integrante_turma1}"/>
+                <h:outputText value="#{msgs.about_integrante_periodo1}"/>
+                <h:outputText value="#{msgs.about_integrante_nome2}"/>
+                <h:outputText value="#{msgs.about_integrante_ra2}" />                
+                <h:outputText value="#{msgs.about_integrante_turma2}"/>
+                <h:outputText value="#{msgs.about_integrante_periodo2}"/>
+                <h:outputText value="#{msgs.about_integrante_nome3}"/>
+                <h:outputText value="#{msgs.about_integrante_ra3}"/>                
+                <h:outputText value="#{msgs.about_integrante_turma3}"/>
+                <h:outputText value="#{msgs.about_integrante_periodo3}"/>
+            </p:panelGrid>
+                
+        </h:form>       
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+        <li><p:commandLink value="#{msgs.lnk_menu_principal}" action="#{acessoBean.registraSaida}"/></li>
+    </ui:define>
+    
+</ui:composition>

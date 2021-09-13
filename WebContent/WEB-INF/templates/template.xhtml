@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:f="http://java.sun.com/jsf/core" >
+
+		<f:loadBundle var="msgs" basename="br.com.webintercambio.resources.messages"></f:loadBundle>
+
+		<h:head>
+			<title>#{msgs.site}</title>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta name="title" content="#{msgs.site}" />
+				<meta name="description" content="Site description here" />
+				<meta name="keywords" content="keywords here" />
+				<meta name="language" content="en" />
+				<meta name="subject" content="Site subject here" />
+				<meta name="robots" content="All" />
+				<meta name="copyright" content="Your company" />
+				<meta name="abstract" content="Site description here" />
+				<meta name="MSSmartTagsPreventParsing" content="true" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link id="theme " rel="stylesheet" type="text/css" href="assets/css/style.css" title="theme" />
+		</h:head>
+	
+		<h:body>
+			
+			<p:growl id="msg" showDetail="true"/>
+			
+			<div class="main">
+			
+				<div style="text-align:center;"> 
+                    <img src="assets/images/page-bg.jpg" /> 
+                </div> 
+			
+				<div class="menu">
+					<ul>
+						<li><p:commandLink value="#{msgs.menu_home}" action="#{acessoBean.registraSaida}" /></li>
+						<li><p:commandLink value="#{msgs.menu_login}" action="#{acessoBean.registraLogoff}" /></li>
+						<li><p:commandLink value="#{msgs.menu_news}" action="#{acessoBean.visualizaNews}" /></li>
+						<li><p:commandLink value="#{msgs.menu_about}" action="#{acessoBean.visualizaSobre}" /></li>
+					</ul>
+				</div>
+				
+				
+
+				<div class="content">
+					<div class="content-inner">
+						<ui:insert name="conteudo-centro">
+							<!--  Espaço para o conteudo central-->
+							<!--  Espaço para o conteudo central-->
+							<!--  Espaço para o conteudo central-->
+						</ui:insert>
+					</div>
+				</div>
+
+				<div class="sidebar">
+					<h3>#{msgs.menu}</h3>
+					<ul>
+						<ui:insert name="conteudo-menu">
+							<!--  Espaço para o conteudo do menu-->
+							<!--  Espaço para o conteudo do menu-->
+							<!--  Espaço para o conteudo do menu-->
+						</ui:insert>
+					</ul>
+		
+					<h3 style="margin-top: 40px">#{msgs.news}</h3>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed
+						non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+						nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+						ligula massa, varius a, semper congue, euismod non, mi.</p>
+					<div style="font-weight: bold; margin-top: 20px">#{msgs.call_us}</div>
+					<div style="text-align:center;margin:20px 0"> 
+                    <img src="assets/images/call-1.jpg" /> 
+                  </div> 
+				</div>
+				
+				<br style="clear:both"></br>
+				
+				<div class="footer">
+					#{msgs.footer}
+				</div>
+
+			</div>
+
+		</h:body>
+
+</html>

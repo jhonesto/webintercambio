@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="conteudo-centro">
+        
+        <h2>#{msgs.login_titulo}</h2>
+        
+        <h:form>
+        
+            <h:panelGrid id="display" columns="2" cellpadding="4">
+                <p:outputLabel value="#{msgs.login_usuario}#{msgs.column}" />
+                <p:inputText value="#{acessoBean.user.login}" id="campo-usuario"/>
+                <p:outputLabel value="#{msgs.login_senha}#{msgs.column}"/>
+                <p:password value="#{acessoBean.user.senha}"  id="campo-senha" toggleMask="true" redisplay="true"/>
+                <p:outputLabel value=" "/>
+                <h:panelGrid id="display2" columns="2" cellpadding="6">
+                    <p:commandButton value="#{msgs.login_acessar}" action="#{acessoBean.autentica}">
+                    	<p:ajax update="msg" />
+                    </p:commandButton>
+                    <p:commandButton value="#{msgs.btn_cancelar}" action="#{acessoBean.registraSaida}"/>
+                </h:panelGrid>
+            </h:panelGrid>
+            
+        </h:form>
+    </ui:define>
+    
+    <ui:define name="conteudo-menu">
+    <h:form>
+        <li><p:commandLink value="#{msgs.lnk_menu_principal}" action="#{acessoBean.registraSaida}"/></li>
+    </h:form>
+    </ui:define>
+
+</ui:composition>
