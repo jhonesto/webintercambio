@@ -41,7 +41,7 @@ ISSN 2357-8904
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
+		
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
