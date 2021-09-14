@@ -14,6 +14,7 @@ ISSN 2357-8904
 * Alterado o Servidor de Aplicação para Tomcat v9.0
 * Alterada a versão do primefaces para 8.0
 * Utilizando a IDE Eclipse para desenvolvimento
+* Adicionado o algoritimo de hash MD5 para persistencia do campo password
 
 **Dependências adicionadas para persistencia:**
 
