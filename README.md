@@ -6,7 +6,7 @@ Projeto Fatec ADS 2013
 Publicado nos Anais do Conic-Semesp Volume 1,2013
 ISSN 2357-8904
 
-[link para a publicação](http://goo.gl/mwJv8Q).
+[link para a publicação](https://conic-semesp.org.br/anais/files/2013/trabalho-1000015455.pdf).
 
 #####Alterações
 
